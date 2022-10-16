@@ -158,7 +158,6 @@ def decrypt():
 
 
 
-
     # 加密方法：
     #ListInit()  # 把用户输入的 文字密钥和原文 变列表
     # MakeAKeyList()  # 文字密钥 变 数字密钥 并创列表
