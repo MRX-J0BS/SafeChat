@@ -1,22 +1,14 @@
 '''
 这个文件是基于SafeChat3.0所改编的
 用于适配GUI
-'''
-'''
-#这些内容需要获取！
-Data_Unsafe = str(input('请输入原文，没有可留空：'))  # 原文
-Data_Unsafe_List = []
-
-Data_Safe = str(input('请输入密文，没有可留空：'))  # 密文
-Data_Safe_List = []
-
-Data_Unsafe_List2_Output = []  # 密文转明文
-
-Key_Input = str(input('请输入密钥，必填：'))  # 密钥（用户输入）
-Key_List = []  # 密钥列表（字母）
-Key_USE_LIST = []  # 密钥列表（最终数字）
+___________用法___________
+只有两个函数：
+encrypt ->> 加密
+decrypt ->> 解密
+另外虽然本函数是为维吉尼亚加密法设计的，但是当做普通的凯撒加密也是可以的！只要key为一个字母即可
 '''
 def encrypt(Data_Unsafe='',Key_Input=''):   # 加密
+    finally_output=''
     Data_Unsafe_List = []
     Key_List = []  # 密钥列表（字母）
     Key_USE_LIST = []  # 密钥列表（最终数字）
@@ -60,10 +52,11 @@ def encrypt(Data_Unsafe='',Key_Input=''):   # 加密
             if x > key_num - 1:
                 x = 0
     for i in Data_Safe_List:
-        print(i, end='')
-
+        finally_output=finally_output+str(i)
+    return finally_output
 
 def decrypt(Data_Safe='',Key_Input=''): # 解密
+    finally_output='' # 最终输出
     Data_Safe_List = []
     Key_List = []  # 密钥列表（字母）
     Key_USE_LIST = []  # 密钥列表（最终数字）
@@ -106,10 +99,8 @@ def decrypt(Data_Safe='',Key_Input=''): # 解密
             if x > key_num - 1:
                 x = 0
     for f in Data_Unsafe_List2_Output:
-        print(f, end='')
-
-
-
+        finally_output=finally_output+str(f)
+    return finally_output
 
 def ReTurnToKey(letter):  # 这个模块可以将 密钥中的字母 转为 用于加密的数字
     letter = letter.upper()
@@ -167,13 +158,3 @@ def ReTurnToKey(letter):  # 这个模块可以将 密钥中的字母 转为 用�
     elif letter == 'Z':
         key = 26
     return key
-
-
-
-
-
-
-
-
-#encrypt(Data_Unsafe='abc',Key_Input='b')
-decrypt(Data_Safe='cde',Key_Input='b')
